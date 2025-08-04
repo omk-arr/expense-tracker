@@ -1,8 +1,10 @@
 import React from 'react'
 import { motion, useAnimation, useInView } from 'framer-motion';
+import {DollarSign} from 'lucide-react'
 
 const Footer = () => {
   return (
+    <div className="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-800 text-white overflow-hidden">
       <motion.footer 
         className="relative z-10 container mx-auto px-6 py-12 border-t border-gray-700"
         initial={{ opacity: 0 }}
@@ -21,6 +23,8 @@ const Footer = () => {
           <p>© 2025 XpenseFlow. All rights reserved. Master your finances, master your future.</p>
         </div>
       </motion.footer>
+      
+    </div>
   )
 }
 
