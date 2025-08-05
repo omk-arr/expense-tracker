@@ -491,7 +491,7 @@ const ExpenseTrackerLanding = () => {
       </motion.section>
 
       {/* Footer */}
-      {/* <motion.footer 
+      <motion.footer 
         className="relative z-10 container mx-auto px-6 py-12 border-t border-gray-700"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -508,7 +508,7 @@ const ExpenseTrackerLanding = () => {
           </motion.div>
           <p>© 2025 XpenseFlow. All rights reserved. Master your finances, master your future.</p>
         </div>
-      </motion.footer> */}
+      </motion.footer>
     </div>
   );
 };

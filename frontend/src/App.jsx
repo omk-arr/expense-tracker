@@ -2,8 +2,28 @@ import { Outlet } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import './App.css';
 import Footer from './pages/Footer';
+import ExpenseTrackerLanding from './pages/Dashboard';
+import Navbar from './pages/Navbar';
+import useAppStore from './store/useAppStore';
+import { useEffect } from 'react';
 
 function App() {
+  const isAuthenticated = !!localStorage.getItem('authToken');
+
+  const setIsMobile = useAppStore((state) => state.setIsMobile);
+
+  useEffect(() => {
+    const isMobileDevice = window.innerWidth <= 640;
+    setIsMobile(isMobileDevice);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [setIsMobile]);
+
   return (
     <div>
       <Toaster
@@ -30,8 +50,15 @@ function App() {
           },
         }}
       />
-      <Outlet />
-      <Footer/>
+      {isAuthenticated ? (
+        <>
+          <Navbar />
+          <Outlet />
+          <Footer />
+        </>
+      ) : (
+        <Outlet/>
+      )}
     </div>
   );
 }
